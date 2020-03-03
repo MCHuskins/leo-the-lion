@@ -6,6 +6,8 @@ using UnityEngine;
 public class cam : MonoBehaviour
 {
     public Transform player;
+//zoom of the camera
+    public int zoom = -11;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +17,6 @@ public class cam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3 (player.position.x, player.position.y, -11);
+        transform.position = new Vector3 (player.position.x, player.position.y, zoom);
     }
 }

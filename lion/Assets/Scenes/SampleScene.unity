@@ -130,6 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 509037870}
+  - component: {fileID: 509037871}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -152,6 +153,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &509037871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509037869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c123ba8e174db2b4aa8643980914b6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  jump: 0
+  jumpmax: 1000
+  jumpi: 30
+  jumpi1: 15
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 998403933}
+  zoom: -11
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -219,7 +238,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -243,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -394,8 +413,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jump: 0
-  jumpmax: 1000
-  jumpi: 30
+  jumpmax: 1.0008
+  jumpi: 0.5
+  jumpi1: 0.5
 --- !u!65 &998403930
 BoxCollider:
   m_ObjectHideFlags: 0
