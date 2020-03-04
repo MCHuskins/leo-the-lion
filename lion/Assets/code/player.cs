@@ -38,7 +38,7 @@ public class player : MonoBehaviour
     }
     //this is going up leo
     if(jump>=jumpi && !(Input.GetKey(KeyCode.Space))){
-        transform.Translate (Vector3.up*jumpi*Time.deltaTime);
+        transform.Translate (Vector3. up*speed*Time.deltaTime);
         jump = (jump-(Time.deltaTime * jumpi));
         //canjump = false;
     }
