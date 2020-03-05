@@ -8,13 +8,11 @@ public class player : MonoBehaviour
     public int speed = 10;
     public float jump = 0.0f;
     //Leo look at the code it is hard to explane
-    public float jumpmax = 1.0008f;
-    //can jump
     //public Transform ground;
-    //private bool canjump = false;
+    private bool canjump1 = false;
+    private bool canjump2 = false;
     //Leo jumpi is jump increments
-    public float jumpi = 0.5f;
-    public float jumpi1 = 0.5f;
+    public float jumpi = 10f;
     void Start()
     {
 
@@ -32,18 +30,18 @@ public class player : MonoBehaviour
     }
     //jump charge
     if (Input.GetKey(KeyCode.Space)) {
-        if(jump<= jumpmax){
-            jump = (jump+(Time.deltaTime * jumpi1));
+        canjump1 = true;
+        jump = (jump + (1*Time.deltaTime))
         }
     }
     //this is going up leo
-    if(jump>=jumpi && !(Input.GetKey(KeyCode.Space))){
+    if(canjump1 && !(Input.GetKey(KeyCode.Space))){
         transform.Translate (Vector3.up*jumpi*Time.deltaTime);
-        jump = (jump-(Time.deltaTime * jumpi));
+        canjump1 = false
         //canjump = false;
     }
     //set thing back to 0 this was need to fix the jump
-    if(jump<=jumpi && !(Input.GetKey(KeyCode.Space))){
+    if(canjump2 && !(Input.GetKey(KeyCode.Space))){
         jump=0;
     }
 }
