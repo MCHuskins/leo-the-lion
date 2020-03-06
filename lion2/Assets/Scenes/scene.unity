@@ -367,9 +367,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jump: 0
-  jumpmax: 1.0008
-  jumpi: 0.5
-  jumpi1: 0.5
+  jumphight: 20
+  jumpw: 2
+  jumpn: 10
 --- !u!54 &1533938351
 Rigidbody:
   m_ObjectHideFlags: 0

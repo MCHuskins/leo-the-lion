@@ -7,12 +7,13 @@ public class player : MonoBehaviour
     //player spped and jump
     public int speed = 10;
     public float jump = 0.0f;
-    //Leo look at the code it is hard to explane
-    //public Transform ground;
+    //jump
     private bool canjump1 = false;
     private bool canjump2 = false;
-    //Leo jumpi is jump increments
-    public float jumpi = 10f;
+    //Leo jumphight is jump increments
+    public float jumphight = 20f;
+    public float jumpw = 2f;
+    public float jumpn = 10f;
     void Start()
     {
 
@@ -31,18 +32,22 @@ public class player : MonoBehaviour
     //jump charge
     if (Input.GetKey(KeyCode.Space)) {
         canjump1 = true;
-        jump = (jump + (1*Time.deltaTime))
+        jump = (jump + (jumpw*Time.deltaTime));
+        if (canjump1 && jump>=jumpn){
+            canjump2 = true;
         }
-    }
+        }
     //this is going up leo
     if(canjump1 && !(Input.GetKey(KeyCode.Space))){
-        transform.Translate (Vector3.up*jumpi*Time.deltaTime);
-        canjump1 = false
-        //canjump = false;
+        transform.Translate(Vector3.up * jumphight * Time.deltaTime, Space.World);
+        canjump1 = false;
+        jump = 0;
     }
     //set thing back to 0 this was need to fix the jump
     if(canjump2 && !(Input.GetKey(KeyCode.Space))){
-        jump=0;
+        transform.Translate (Vector3.up*jumphight*Time.deltaTime);
+        canjump2 = false;
+        jump = 0;
     }
 }
 }
