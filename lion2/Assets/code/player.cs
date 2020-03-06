@@ -49,15 +49,14 @@ void OnCollisionExit (Collision col){
         }
         }
     //jump things:
-    // if (rb.velocity.y < 0) {
-    //     rb.velocity = Vector3.up*Physics2D.gravity*jumpdown*Time.deltaTime;
-    // }
+
     if(canjump1 && !(Input.GetKey(KeyCode.Space))){
         rb.velocity = new Vector3(0, jumphight+2, 0);
         canjump1 = false;
         jump = 0;
     }
-    //set thing back to 0 this was need to fix the jump
+    //set thi
+    ng back to 0 this was need to fix the jump
     if(canjump2 && !(Input.GetKey(KeyCode.Space))){
         rb.velocity = new Vector3(0, jumphight+jumphight, 0);
         canjump2 = false;
