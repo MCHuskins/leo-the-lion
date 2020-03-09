@@ -55,8 +55,6 @@ void OnCollisionExit (Collision col){
         canjump1 = false;
         jump = 0;
     }
-    //set thi
-    ng back to 0 this was need to fix the jump
     if(canjump2 && !(Input.GetKey(KeyCode.Space))){
         rb.velocity = new Vector3(0, jumphight+jumphight, 0);
         canjump2 = false;
