@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class betterplayer : MonoBehaviour
 {
+    //character
+    public float test = 0.0f;
     //player spped and jump
     public int speed = 10;
     // can jump for the charge
@@ -19,6 +21,12 @@ public class betterplayer : MonoBehaviour
     public float jumpw = 1f;
     public float jumpn = 2f;
     public int jumpmax = 3;
+
+    void playerdeath()
+    {
+        transform.position = new Vector3(0,0,0);
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,7 +34,7 @@ public class betterplayer : MonoBehaviour
     //ground?
 void OnCollisionEnter(Collision col){
         canjump = true;
-    }
+        }
 
 void OnCollisionExit (Collision col){
         canjump = false;
@@ -34,12 +42,13 @@ void OnCollisionExit (Collision col){
     // Update is called once per frame
     void Update()
     {
+        test = rb.velocity.x;
         //left or right
         if (Input.GetKey (KeyCode.A)) {
-        rb.velocity = new Vector3(speed*-1, 0, 0);
+        rb.velocity = new Vector3(speed*-1, rb.velocity.y, 0);
     }
     if(Input.GetKey (KeyCode.D)) {
-        rb.velocity = new Vector3(speed, 0,0);
+        rb.velocity = new Vector3(speed, rb.velocity.y,0);
     }
     //dowm
     if(rb.velocity.y<0){
@@ -49,19 +58,19 @@ void OnCollisionExit (Collision col){
     if (Input.GetKey(KeyCode.Space) && canjump) {
         canjump1 = true;
         jump = (jump + (jumpw*Time.deltaTime));
-        if (jumpi+1<=jump && !(jumpi>jumpmax)){
+        if (jumpi+1<=jump && !(jumpi>=jumpmax)){
             jumpi = jumpi+1;
         }
         }
     //jump things:
 
     if(canjump1 && !(Input.GetKey(KeyCode.Space))){
-        rb.velocity = new Vector3(0, jumphight+2, 0);
+        rb.velocity = new Vector3(rb.velocity.x, jumphight+2, 0);
         canjump1 = false;
         jump = 0;
     }
     if(jumpi>=1 && !(Input.GetKey(KeyCode.Space))){
-        rb.velocity = new Vector3(0, jumphight+jumphight*jumpi, 0);
+        rb.velocity = new Vector3(rb.velocity.x, jumphight+jumphight*jumpi, 0);
         jump = 0;
         jumpi =0;
     }
