@@ -14,7 +14,7 @@ public class betterplayer : MonoBehaviour
     public bool canjump1 = false;
     public int jumpi = 0;
     //Leo jump veribales
-    public float jumphight = 3f;
+    public float jumphight = 4f;
     public float jumpdown = 2f;
     public Rigidbody rb;
     //charge
@@ -24,7 +24,7 @@ public class betterplayer : MonoBehaviour
 
     void playerdeath()
     {
-        transform.position = new Vector3(0,0,0);
+        transform.position = new Vector3(0,0,-1);
     }
 
     void Start()
@@ -45,10 +45,10 @@ void OnCollisionExit (Collision col){
         test = rb.velocity.x;
         //left or right
         if (Input.GetKey (KeyCode.A)) {
-        rb.velocity = new Vector3(speed*-1, rb.velocity.y, 0);
+        rb.velocity = new Vector3(speed*-1, rb.velocity.y, -1);
     }
     if(Input.GetKey (KeyCode.D)) {
-        rb.velocity = new Vector3(speed, rb.velocity.y,0);
+        rb.velocity = new Vector3(speed, rb.velocity.y,-1);
     }
     //dowm
     if(rb.velocity.y<0){
@@ -65,12 +65,12 @@ void OnCollisionExit (Collision col){
     //jump things:
 
     if(canjump1 && !(Input.GetKey(KeyCode.Space))){
-        rb.velocity = new Vector3(rb.velocity.x, jumphight+2, 0);
+        rb.velocity = new Vector3(rb.velocity.x, jumphight+2, -1);
         canjump1 = false;
         jump = 0;
     }
     if(jumpi>=1 && !(Input.GetKey(KeyCode.Space))){
-        rb.velocity = new Vector3(rb.velocity.x, jumphight+jumphight*jumpi, 0);
+        rb.velocity = new Vector3(rb.velocity.x, jumphight+jumphight*jumpi, -1);
         jump = 0;
         jumpi =0;
     }
