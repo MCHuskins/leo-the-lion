@@ -16,20 +16,20 @@ public class betterplayer : MonoBehaviour
     //Leo jump veribales
     public float jumphight = 4f;
     public float jumpdown = 2f;
-    public Rigidbody rb;
+    public Rigidbody2D rb;
     //charge
-    public float jumpw = 1f;
+    public float jumpw = 15f;
     public float jumpn = 2f;
     public int jumpmax = 3;
 
     void playerdeath()
     {
-        transform.position = new Vector3(0,0,-1);
+        transform.position = new Vector2(0,0);
     }
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
     //ground?
 void OnCollisionEnter(Collision col){
@@ -45,14 +45,14 @@ void OnCollisionExit (Collision col){
         test = rb.velocity.x;
         //left or right
         if (Input.GetKey (KeyCode.A)) {
-        rb.velocity = new Vector3(speed*-1, rb.velocity.y, -1);
+        rb.velocity = new Vector2(speed*-1, rb.velocity.y);
     }
     if(Input.GetKey (KeyCode.D)) {
-        rb.velocity = new Vector3(speed, rb.velocity.y,-1);
+        rb.velocity = new Vector2(speed, rb.velocity.y);
     }
     //dowm
     if(rb.velocity.y<0){
-        rb.velocity += Vector3.up * Physics2D.gravity.y * (jumpdown*1)*Time.deltaTime;
+        rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpdown*1)*Time.deltaTime;
     }
     //jump charge
     if (Input.GetKey(KeyCode.Space) && canjump) {
@@ -65,12 +65,12 @@ void OnCollisionExit (Collision col){
     //jump things:
 
     if(canjump1 && !(Input.GetKey(KeyCode.Space))){
-        rb.velocity = new Vector3(rb.velocity.x, jumphight+2, -1);
+        rb.velocity = new Vector2(rb.velocity.x, jumphight+2);
         canjump1 = false;
         jump = 0;
     }
     if(jumpi>=1 && !(Input.GetKey(KeyCode.Space))){
-        rb.velocity = new Vector3(rb.velocity.x, jumphight+jumphight*jumpi, -1);
+        rb.velocity = new Vector2(rb.velocity.x, jumphight+jumphight*jumpi);
         jump = 0;
         jumpi =0;
     }
