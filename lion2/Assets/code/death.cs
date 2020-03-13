@@ -5,7 +5,8 @@ using UnityEngine;
 public class death : MonoBehaviour
 {
     //move player back
-    void OnCollisionEnter(Collision col){
-            col.transform.position = new Vector3(0,0,0);
+    void OnCollisionEnter2D(Collision2D col){
+            col.transform.position = new Vector2(0,0);
+            Debug.Log("kill me");
             }
 }

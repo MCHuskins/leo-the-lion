@@ -5,6 +5,7 @@ using UnityEngine;
 public class betterplayer : MonoBehaviour
 {
     //character
+    public Animator animator;
     public float test = 0.0f;
     //player spped and jump
     public int speed = 10;
@@ -32,16 +33,17 @@ public class betterplayer : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
     //ground?
-void OnCollisionEnter(Collision col){
+void OnCollisionEnter2D(Collision2D col){
         canjump = true;
         }
 
-void OnCollisionExit (Collision col){
+void OnCollisionExit2D(Collision2D col){
         canjump = false;
     }
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("speed", Mathf.Abs(test));
         test = rb.velocity.x;
         //left or right
         if (Input.GetKey (KeyCode.A)) {
@@ -73,6 +75,18 @@ void OnCollisionExit (Collision col){
         rb.velocity = new Vector2(rb.velocity.x, jumphight+jumphight*jumpi);
         jump = 0;
         jumpi =0;
+    }
+    if(canjump){
+        if(!(Input.GetKey(KeyCode.D))){
+            if(rb.velocity.x >=5){
+                rb.velocity = new Vector2(rb.velocity.x-5, rb.velocity.y);
+            }
+            }
+        if(!(Input.GetKey(KeyCode.D))){
+            if(rb.velocity.x <=-5){
+                rb.velocity = new Vector2(rb.velocity.x+5, rb.velocity.y);
+            }
+        }
     }
 }
 }
