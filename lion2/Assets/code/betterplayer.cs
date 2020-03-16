@@ -23,10 +23,6 @@ public class betterplayer : MonoBehaviour
     public float jumpn = 2f;
     public int jumpmax = 3;
 
-    void playerdeath()
-    {
-        transform.position = new Vector2(0,0);
-    }
 
     void Start()
     {

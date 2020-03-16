@@ -6,7 +6,8 @@ public class death : MonoBehaviour
 {
     //move player back
     void OnCollisionEnter2D(Collision2D col){
-            col.transform.position = new Vector2(0,0);
-            Debug.Log("kill me");
+            if(col.gameObject.tag == "Player"){
+                col.transform.position = new Vector2(0,0);
+            }
             }
 }
