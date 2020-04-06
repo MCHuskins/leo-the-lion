@@ -57,6 +57,7 @@
      <Compile Include="Assets\code\cam.cs" />
      <Compile Include="Assets\code\deathblock.cs" />
      <Compile Include="Assets\code\sniper.cs" />
+     <Compile Include="Assets\code\start.cs" />
      <Compile Include="Assets\code\walk.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
