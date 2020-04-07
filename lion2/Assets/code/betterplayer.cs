@@ -15,7 +15,7 @@ public class betterplayer : MonoBehaviour
     public bool canjump1 = false;
     public int jumpi = 0;
     //Leo jump veribales
-    public float jumphight = 4f;
+    public float jumphight = 8f;
     public float jumpdown = 2f;
     public Rigidbody2D rb;
     //charge
@@ -52,26 +52,11 @@ void OnCollisionExit2D(Collision2D col){
     if(rb.velocity.y<0){
         rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpdown*1)*Time.deltaTime;
     }
-    //jump charge
-    if (Input.GetKey(KeyCode.Space) && canjump) {
-        canjump1 = true;
-        jump = (jump + (jumpw*Time.deltaTime));
-        if (jumpi+1<=jump && !(jumpi>=jumpmax)){
-            jumpi = jumpi+1;
-        }
-        }
-    //jump things:
+    //jump
+    if(canjump && (Input.GetKey(KeyCode.Space))){
+        rb.velocity = new Vector2(rb.velocity.x, jumphight+jumphight);
+    }
 
-    if(canjump1 && !(Input.GetKey(KeyCode.Space))){
-        rb.velocity = new Vector2(rb.velocity.x, jumphight+2);
-        canjump1 = false;
-        jump = 0;
-    }
-    if(jumpi>=1 && !(Input.GetKey(KeyCode.Space))){
-        rb.velocity = new Vector2(rb.velocity.x, jumphight+jumphight*jumpi);
-        jump = 0;
-        jumpi =0;
-    }
     if(canjump){
         if(!(Input.GetKey(KeyCode.D))){
             if(rb.velocity.x >=5){

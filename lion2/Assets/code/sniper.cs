@@ -52,6 +52,7 @@ public bool justshot = false;
         }
         if(shouldf>=interval){
             swait += 20*Time.deltaTime;
+            transform.localScale = new Vector2(5,5);
             follow = false;
         }
         if(swait>= interval){
@@ -60,6 +61,7 @@ public bool justshot = false;
             swait = 0;
         }
         if (shooting){
+            transform.localScale = new Vector2(6,6);
             if(onplayer){
                 player.transform.position = new Vector2(0,0);
             }
