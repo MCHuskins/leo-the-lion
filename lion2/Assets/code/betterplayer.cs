@@ -6,14 +6,12 @@ public class betterplayer : MonoBehaviour
 {
     //character
     public Animator animator;
-    public float test = 0.0f;
+    public float moving = 0.0f;
     //player spped and jump
     public int speed = 10;
     // can jump for the charge
-    public float jump = 0.0f;
     public bool canjump = true;
     public bool canjump1 = false;
-    public int jumpi = 0;
     //Leo jump veribales
     public float jumphight = 8f;
     public float jumpdown = 2f;
@@ -39,8 +37,8 @@ void OnCollisionExit2D(Collision2D col){
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("speed", Mathf.Abs(test));
-        test = rb.velocity.x;
+        animator.SetFloat("speed", Mathf.Abs(moving));
+        moving = rb.velocity.x;
         //left or right
         if (Input.GetKey (KeyCode.A)) {
         rb.velocity = new Vector2(speed*-1, rb.velocity.y);
