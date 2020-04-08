@@ -9,7 +9,8 @@ public class betterplayer : MonoBehaviour
     public float moving = 0.0f;
     public bool crouching = false;
     //player spped and jump
-    public int speed = 20;
+    public int speed = 2;
+    public int speedmax= 20;
     // can jump for the charge
     public bool canjump = true;
     //Leo jump veribales
@@ -17,12 +18,14 @@ public class betterplayer : MonoBehaviour
     public int jumpdown = 6;
     private Rigidbody2D rb;
     //how fast you slow down
-    public int friction = 5;
+    public int friction = 8;
     //crouch
     public int chargejumphigt = 5;
     public int charge;
     private float chargecount;
     public int chargemax = 24;
+    public int nextcharge = 5;
+    public int chargespeed = 6;
 
 
     void Start()
@@ -44,12 +47,16 @@ public class betterplayer : MonoBehaviour
     {
 
         //moving Left
-        if (Input.GetKey(KeyCode.A)) {
-            rb.velocity = new Vector2(speed*-1, rb.velocity.y);
+    if(Input.GetKey(KeyCode.A)) {
+        if(-1*moving <= speedmax){
+            rb.velocity = new Vector2(rb.velocity.x-speed, rb.velocity.y);
         }
+    }
         //moving Right
     if(Input.GetKey(KeyCode.D)) {
-        rb.velocity = new Vector2(speed, rb.velocity.y);
+        if(moving <= speedmax){
+            rb.velocity = new Vector2(rb.velocity.x+speed, rb.velocity.y);
+        }
     }
     //jump
     if(canjump && (Input.GetKey(KeyCode.Space)) && !(crouching)){
@@ -58,16 +65,20 @@ public class betterplayer : MonoBehaviour
     //crouch/ charge jump
     if(canjump && Input.GetKey(KeyCode.S)){
        crouching = true;
+       speedmax = chargespeed;
        chargecount += 10*Time.deltaTime;
-       if(chargecount >= charge && charge <= chargemax){
+       if(chargecount >= nextcharge && charge <= chargemax){
            charge += 8;
+           nextcharge += 5;
        }
    }
    if(crouching && !(Input.GetKey(KeyCode.S))){
+       speedmax = 20;
        crouching = false;
-       rb.velocity = new Vector2(rb.velocity.x, jumphight+jumphight+charge);
+       rb.velocity = new Vector2(rb.velocity.x, jumphight+charge);
        charge = 0;
        chargecount = 0;
+       nextcharge = 5;
    }
     // slowing you down when you stop moving so friction unless you are in the air
     if(canjump){
@@ -76,7 +87,7 @@ public class betterplayer : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x-friction, rb.velocity.y);
             }
             }
-        if(!(Input.GetKey(KeyCode.D))){
+        if(!(Input.GetKey(KeyCode.A))){
             if(rb.velocity.x <=-5){
                 rb.velocity = new Vector2(rb.velocity.x+friction, rb.velocity.y);
             }

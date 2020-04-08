@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 8935694725972648988}
   - component: {fileID: 8935694725972648991}
   - component: {fileID: 8935694725972648960}
-  - component: {fileID: 8935694725972648990}
   - component: {fileID: 8935694725972648961}
   - component: {fileID: 8935694725972648963}
   - component: {fileID: 7976034736834321348}
   - component: {fileID: 5303483412318528456}
+  - component: {fileID: 9102490373706091369}
   m_Layer: 8
   m_Name: lion
   m_TagString: Player
@@ -117,29 +117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732b6e308855bfe459742cb0acae0db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8935694725972648990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8935694725972648987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d279b75906f914d4fbf04c8258b3e33d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 8935694725972648991}
-  moving: 0
-  crouching: 0
-  speed: 20
-  canjump: 1
-  jumphight: 10
-  jumpdown: 6
-  friction: 5
-  chargejumphigt: 5
-  charge: 0
-  chargemax: 24
 --- !u!50 &8935694725972648961
 Rigidbody2D:
   serializedVersion: 4
@@ -229,6 +206,32 @@ CapsuleCollider2D:
   m_Offset: {x: -0.68, y: -1.27}
   m_Size: {x: 2.98, y: 1.2}
   m_Direction: 1
+--- !u!114 &9102490373706091369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935694725972648987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d279b75906f914d4fbf04c8258b3e33d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8935694725972648991}
+  moving: 0
+  crouching: 0
+  speed: 2
+  speedmax: 20
+  canjump: 1
+  jumphight: 10
+  jumpdown: 6
+  friction: 8
+  chargejumphigt: 5
+  charge: 0
+  chargemax: 24
+  nextcharge: 5
+  chargespeed: 6
 --- !u!1 &8935694726753354395
 GameObject:
   m_ObjectHideFlags: 0
