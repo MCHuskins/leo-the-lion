@@ -9,16 +9,20 @@ public class betterplayer : MonoBehaviour
     public float moving = 0.0f;
     public bool crouching = false;
     //player spped and jump
-    public int speed = 10;
+    public int speed = 20;
     // can jump for the charge
     public bool canjump = true;
-    public bool canjump1 = false;
     //Leo jump veribales
-    public int jumphight = 8;
-    public int jumpdown = 2;
-    public Rigidbody2D rb;
+    public int jumphight = 10;
+    public int jumpdown = 6;
+    private Rigidbody2D rb;
     //how fast you slow down
     public int friction = 5;
+    //crouch
+    public int chargejumphigt = 5;
+    public int charge;
+    private float chargecount;
+    public int chargemax = 24;
 
 
     void Start()
@@ -38,26 +42,34 @@ public class betterplayer : MonoBehaviour
 
     void Update()
     {
-        //pushed the player down so the jump looks better
-        if(rb.velocity.y<0){
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpdown*1)*Time.deltaTime;
-        }
-        //turing the animation
-        moving = rb.velocity.x;
-        animator.SetFloat("speed", Mathf.Abs(moving));
+
         //moving Left
-        if (Input.GetKey (KeyCode.A)) {
-        rb.velocity = new Vector2(speed*-1, rb.velocity.y);
-    }
+        if (Input.GetKey(KeyCode.A)) {
+            rb.velocity = new Vector2(speed*-1, rb.velocity.y);
+        }
         //moving Right
-    if(Input.GetKey (KeyCode.D)) {
+    if(Input.GetKey(KeyCode.D)) {
         rb.velocity = new Vector2(speed, rb.velocity.y);
     }
     //jump
-    if(canjump && (Input.GetKey(KeyCode.W))){
+    if(canjump && (Input.GetKey(KeyCode.Space)) && !(crouching)){
         rb.velocity = new Vector2(rb.velocity.x, jumphight+jumphight);
     }
-    // slowing you down when you stop moving so friction
+    //crouch/ charge jump
+    if(canjump && Input.GetKey(KeyCode.S)){
+       crouching = true;
+       chargecount += 10*Time.deltaTime;
+       if(chargecount >= charge && charge <= chargemax){
+           charge += 8;
+       }
+   }
+   if(crouching && !(Input.GetKey(KeyCode.S))){
+       crouching = false;
+       rb.velocity = new Vector2(rb.velocity.x, jumphight+jumphight+charge);
+       charge = 0;
+       chargecount = 0;
+   }
+    // slowing you down when you stop moving so friction unless you are in the air
     if(canjump){
         if(!(Input.GetKey(KeyCode.D))){
             if(rb.velocity.x >=5){
@@ -70,5 +82,14 @@ public class betterplayer : MonoBehaviour
             }
         }
     }
+    //pushed the player down so the jump looks better
+    if(rb.velocity.y<0){
+        rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpdown*1)*Time.deltaTime;
+    }
+    //turing the animation
+    moving = rb.velocity.x;
+    animator.SetFloat("speed", Mathf.Abs(moving));
+    //animator.SetBool("crouching", crouching)
+
 }
 }

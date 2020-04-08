@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 8935694725972648990}
   - component: {fileID: 8935694725972648961}
   - component: {fileID: 8935694725972648963}
-  - component: {fileID: 8935694725972648989}
-  - component: {fileID: 7032798769229285795}
+  - component: {fileID: 7976034736834321348}
+  - component: {fileID: 5303483412318528456}
   m_Layer: 8
   m_Name: lion
   m_TagString: Player
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -168376599
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 019eae67f2e37cc418a46176610910f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -130,18 +130,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8935694725972648991}
-  test: 0
+  moving: 0
+  crouching: 0
   speed: 20
-  jump: 0
   canjump: 1
-  canjump1: 0
-  jumpi: 0
   jumphight: 10
   jumpdown: 6
-  rb: {fileID: 0}
-  jumpw: 3
-  jumpn: 2
-  jumpmax: 3
+  friction: 5
+  chargejumphigt: 5
+  charge: 0
+  chargemax: 24
 --- !u!50 &8935694725972648961
 Rigidbody2D:
   serializedVersion: 4
@@ -179,7 +177,7 @@ BoxCollider2D:
   m_Offset: {x: 0.48754394, y: -0.39651638}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.67, y: 0.5}
     oldSize: {x: 7.45, y: 3.77}
     newSize: {x: 7.45, y: 3.77}
     adaptiveTilingThreshold: 0.5
@@ -189,7 +187,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.182697, y: 2.8636117}
   m_EdgeRadius: 0
---- !u!61 &8935694725972648989
+--- !u!61 &7976034736834321348
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,10 +200,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.0631447, y: 1.2855577}
+  m_Offset: {x: 1.5790396, y: 0.78904784}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.67, y: 0.5}
     oldSize: {x: 7.45, y: 3.77}
     newSize: {x: 7.45, y: 3.77}
     adaptiveTilingThreshold: 0.5
@@ -213,10 +211,10 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4906101, y: 1.2376496}
+  m_Size: {x: 1.7589207, y: 2.1919043}
   m_EdgeRadius: 0
---- !u!68 &7032798769229285795
-EdgeCollider2D:
+--- !u!70 &5303483412318528456
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -228,12 +226,9 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 1.9714794, y: -0.49534607}
-  - {x: 2.069744, y: -0.49534607}
-  - {x: 2.9819813, y: 0.6934844}
+  m_Offset: {x: -0.68, y: -1.27}
+  m_Size: {x: 2.98, y: 1.2}
+  m_Direction: 1
 --- !u!1 &8935694726753354395
 GameObject:
   m_ObjectHideFlags: 0
