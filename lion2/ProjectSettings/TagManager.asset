@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
+  - background
+  - blocks
   - player
-  - 
-  - 
-  - 
-  - 
+  - foreground
+  - UI (real ui)
   - 
   - 
   - 
