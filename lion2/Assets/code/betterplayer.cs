@@ -12,7 +12,7 @@ public class betterplayer : MonoBehaviour
     public int speed = 2;
     public int speedmax= 20;
     // can jump for the charge
-    public bool canjump = true;
+    public bool canjump = false;
     //Leo jump veribales
     public int jumphight = 10;
     public int jumpdown = 6;
@@ -26,22 +26,24 @@ public class betterplayer : MonoBehaviour
     public int chargemax = 24;
     public int nextcharge = 5;
     public int chargespeed = 6;
+    //attack
+    public bool attackright = false;
+    public bool attackleft = false;
 
-
-    void Start()
-    {
+    void Start(){
         rb = GetComponent<Rigidbody2D>();
     }
-
-    //ground?
-    void OnCollisionEnter2D(Collision2D col){
+    void OnTriggerEnter2D(Collider2D col){
+        if(col.gameObject.tag == "block"){
             canjump = true;
+        }
             }
 
-    void OnCollisionExit2D(Collision2D col){
+    void OnTriggerExit2D(Collider2D col){
+        if(col.gameObject.tag == "block"){
             canjump = false;
         }
-
+        }
 
     void Update()
     {
@@ -72,10 +74,30 @@ public class betterplayer : MonoBehaviour
            nextcharge += 5;
        }
    }
-   if(crouching && !(Input.GetKey(KeyCode.S))){
+   if(crouching && (Input.GetKey(KeyCode.Space))){
        speedmax = 20;
        crouching = false;
        rb.velocity = new Vector2(rb.velocity.x, jumphight+charge);
+       charge = 0;
+       chargecount = 0;
+       nextcharge = 5;
+   }
+   //attack to the left
+   if(crouching && !(Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.A))){
+       attackleft = true;
+       rb.velocity = new Vector2(rb.velocity.x-charge, jumphight);
+       speedmax = 20;
+       crouching = false;
+       charge = 0;
+       chargecount = 0;
+       nextcharge = 5;
+   }
+   //attack to the right
+   if(crouching && !(Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.D))){
+       attackright = true;
+       rb.velocity = new Vector2(rb.velocity.x+charge, jumphight);
+       speedmax = 20;
+       crouching = false;
        charge = 0;
        chargecount = 0;
        nextcharge = 5;
@@ -101,6 +123,12 @@ public class betterplayer : MonoBehaviour
     moving = rb.velocity.x;
     animator.SetFloat("speed", Mathf.Abs(moving));
     //animator.SetBool("crouching", crouching)
+    //animator.SetBool("attackleft", attackleft)
+    //animator.SetBool("attackright", attackright)
+    //rest the attacks
+//    if(attackleft || attackright){
+
+//    }
 
 }
 }

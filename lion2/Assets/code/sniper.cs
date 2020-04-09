@@ -7,19 +7,21 @@ public class sniper : MonoBehaviour
 //follow
 public Transform player;
 public bool follow = true;
-public int followspeed= 18;
+public int followspeed= 18; // how fast the snipper
 public float shouldf = 0f;
 public bool onplayer = false;
 //right before shooting
 public float swait = 0f;
 //time betwwen shots
-public int interval = 1;
+public int interval = 20;
 
+//time that the stopses
 //shooting
 public bool shooting = false;
+
 //after shot
 public float ashott = 0f;
-public int tilnext = 15;
+public int tilnext = 15; //
 public bool justshot = false;
     void Start(){
 
