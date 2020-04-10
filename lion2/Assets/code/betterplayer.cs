@@ -14,7 +14,7 @@ public class betterplayer : MonoBehaviour
     // can jump for the charge
     public bool canjump = false;
     //Leo jump veribales
-    public int jumphight = 10;
+    public int jumphight = 14;
     public int jumpdown = 6;
     private Rigidbody2D rb;
     //how fast you slow down
@@ -32,6 +32,7 @@ public class betterplayer : MonoBehaviour
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
+        
     }
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "block"){
@@ -77,7 +78,7 @@ public class betterplayer : MonoBehaviour
    if(crouching && (Input.GetKey(KeyCode.Space))){
        speedmax = 20;
        crouching = false;
-       rb.velocity = new Vector2(rb.velocity.x, jumphight+charge);
+       rb.velocity = new Vector2(rb.velocity.x, + jumphight+charge+5);
        charge = 0;
        chargecount = 0;
        nextcharge = 5;
