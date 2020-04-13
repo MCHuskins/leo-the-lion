@@ -33,5 +33,12 @@ public class potrolbehavior : MonoBehaviour {
                 movingRight = true;
             }
         }
+       
+
     }
+    
+        
 }
+
+
+
