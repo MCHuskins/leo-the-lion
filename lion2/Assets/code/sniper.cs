@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class sniper : MonoBehaviour
 {
+//animations
+public Animator animator;
 //follow
 public Transform player;
 public bool follow = true;
@@ -15,7 +17,10 @@ public float swait = 0f;
 //time betwwen shots
 public int interval = 20;
 
-//time that the stopses
+//right before
+public bool lastw = false;
+public float lastc = 0f;
+
 //shooting
 public bool shooting = false;
 
@@ -44,8 +49,9 @@ public bool justshot = false;
     }
 
     void Update(){
+        //animations
+        animator.SetBool("lastw", lastw);
         //follow section
-        // isonplayer();
         if(onplayer){
             shouldf += 20*Time.deltaTime;
         }
@@ -54,23 +60,34 @@ public bool justshot = false;
         }
         if(shouldf>=interval){
             swait += 20*Time.deltaTime;
-            transform.localScale = new Vector2(5,5);
+            transform.localScale = new Vector2(6,6);
             follow = false;
         }
         if(swait>= interval){
-            shooting = true;
+            lastw = true;
             shouldf = 0;
             swait = 0;
         }
-        if (shooting){
-            transform.localScale = new Vector2(6,6);
+        if(lastw){
+            lastc += 20*Time.deltaTime;
+            transform.localScale = new Vector2(4,4);
+            animator.SetBool("lastw", lastw);
+        }
+        if(lastc>= interval){
+            shooting = true;
+            lastc = 0;
+        }
+        if(shooting){
             if(onplayer){
                 player.transform.position = new Vector2(0,0);
+                transform.position = new Vector2(-15,5);
             }
+            lastw = false;
             justshot = true;
             shooting = false;
         }
         if(justshot){
+            transform.localScale = new Vector2(5,5);
             ashott += 20*Time.deltaTime;
         }
         if(ashott>= tilnext){
