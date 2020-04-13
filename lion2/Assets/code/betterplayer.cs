@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class betterplayer : MonoBehaviour
 {
-    //character
+    //character Animation
     public Animator animator;
     public float moving = 0.0f;
-    public bool crouching = false;
+
     //player spped and jump
     public int speed = 2;
     public int speedmax= 20;
@@ -20,6 +20,7 @@ public class betterplayer : MonoBehaviour
     //how fast you slow down
     public int friction = 8;
     //crouch
+    public bool crouching = false;
     public int chargejumphigt = 5;
     public int charge;
     private float chargecount;
@@ -27,12 +28,13 @@ public class betterplayer : MonoBehaviour
     public int nextcharge = 5;
     public int chargespeed = 6;
     //attack
-    public bool attackright = false;
-    public bool attackleft = false;
+    public bool attack = false;
+    private float attackcount;
+    public int attackd = 1;
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
-        
+
     }
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "block"){
@@ -46,9 +48,13 @@ public class betterplayer : MonoBehaviour
         }
         }
 
-    void Update()
-    {
-
+    void Update(){
+    //change the animation
+    moving = rb.velocity.x;
+    animator.SetFloat("speed", Mathf.Abs(moving));
+    animator.SetBool("crouching", crouching);
+    animator.SetBool("attack", attack);
+    animator.SetBool("!jump", canjump);
         //moving Left
     if(Input.GetKey(KeyCode.A)) {
         if(-1*moving <= speedmax){
@@ -85,7 +91,7 @@ public class betterplayer : MonoBehaviour
    }
    //attack to the left
    if(crouching && !(Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.A))){
-       attackleft = true;
+       attack = true;
        rb.velocity = new Vector2(rb.velocity.x-charge, jumphight);
        speedmax = 20;
        crouching = false;
@@ -95,7 +101,7 @@ public class betterplayer : MonoBehaviour
    }
    //attack to the right
    if(crouching && !(Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.D))){
-       attackright = true;
+       attack = true;
        rb.velocity = new Vector2(rb.velocity.x+charge, jumphight);
        speedmax = 20;
        crouching = false;
@@ -120,16 +126,14 @@ public class betterplayer : MonoBehaviour
     if(rb.velocity.y<0){
         rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpdown*1)*Time.deltaTime;
     }
-    //turing the animation
-    moving = rb.velocity.x;
-    animator.SetFloat("speed", Mathf.Abs(moving));
-    //animator.SetBool("crouching", crouching)
-    //animator.SetBool("attackleft", attackleft)
-    //animator.SetBool("attackright", attackright)
-    //rest the attacks
-//    if(attackleft || attackright){
-
-//    }
+    //truns off the attack
+    if(attack){
+        attackcount += 1*Time.deltaTime;
+    }
+    if(attack && canjump && attackcount >= attackd){
+        attack = false;
+        attackcount = 0;
+    }
 
 }
 }

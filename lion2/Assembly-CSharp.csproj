@@ -56,7 +56,7 @@
      <Compile Include="Assets\code\betterplayer.cs" />
      <Compile Include="Assets\code\cam.cs" />
      <Compile Include="Assets\code\deathblock.cs" />
-     <Compile Include="Assets\code\potrolbehavior.cs" />
+     <Compile Include="Assets\code\partollerkiller.cs" />
      <Compile Include="Assets\code\sniper.cs" />
      <Compile Include="Assets\code\start.cs" />
      <Compile Include="Assets\code\walk.cs" />

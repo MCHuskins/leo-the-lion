@@ -136,20 +136,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8304799122323542340}
   moving: 0
-  crouching: 0
   speed: 2
   speedmax: 20
   canjump: 0
   jumphight: 14
   jumpdown: 6
   friction: 8
+  crouching: 0
   chargejumphigt: 5
   charge: 0
   chargemax: 24
   nextcharge: 5
   chargespeed: 6
-  attackright: 0
-  attackleft: 0
+  attack: 0
 --- !u!114 &8304799122358437418
 MonoBehaviour:
   m_ObjectHideFlags: 0
