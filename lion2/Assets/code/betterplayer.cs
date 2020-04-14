@@ -7,7 +7,8 @@ public class betterplayer : MonoBehaviour
     //character Animation
     public Animator animator;
     public float moving = 0.0f;
-
+    public bool jumping = false;
+    private float prejump;
     //player spped and jump
     public int speed = 2;
     public int speedmax= 20;
@@ -32,6 +33,7 @@ public class betterplayer : MonoBehaviour
     private float attackcount;
     public int attackd = 1;
 
+
     void Start(){
         rb = GetComponent<Rigidbody2D>();
 
@@ -51,10 +53,20 @@ public class betterplayer : MonoBehaviour
     void Update(){
     //change the animation
     moving = rb.velocity.x;
+    animator.SetBool("jump", jumping);
     animator.SetFloat("speed", Mathf.Abs(moving));
     animator.SetBool("crouching", crouching);
     animator.SetBool("attack", attack);
     animator.SetBool("!jump", canjump);
+    //the jump part
+    if(prejump>=1){
+        jumping = false;
+        prejump = 0;
+    }
+    if(jumping){
+        prejump += 30*Time.deltaTime;
+    }
+
         //moving Left
     if(Input.GetKey(KeyCode.A)) {
         if(-1*moving <= speedmax){
@@ -69,6 +81,7 @@ public class betterplayer : MonoBehaviour
     }
     //jump
     if(canjump && (Input.GetKey(KeyCode.Space)) && !(crouching)){
+        jumping = true;
         rb.velocity = new Vector2(rb.velocity.x, jumphight+jumphight);
     }
     //crouch/ charge jump
