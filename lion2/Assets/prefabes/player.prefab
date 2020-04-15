@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7644866793646399818}
   - component: {fileID: 9124410860945617941}
   - component: {fileID: 2161114177189564512}
-  - component: {fileID: 2267269635752176607}
-  - component: {fileID: 5947070288999355402}
+  - component: {fileID: 5493327615105424124}
   - component: {fileID: 1613974516338191109}
+  - component: {fileID: 7912727228589766859}
   - component: {fileID: 7611910005022396587}
   - component: {fileID: 6821922956103850203}
   - component: {fileID: 3244202626202336090}
@@ -122,7 +122,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2267269635752176607
+--- !u!114 &5493327615105424124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,36 +131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2431158253972498524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d279b75906f914d4fbf04c8258b3e33d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2161114177189564512}
-  moving: 0
-  jumping: 0
-  speed: 2
-  speedmax: 20
-  canjump: 0
-  jumphight: 14
-  jumpdown: 6
-  friction: 8
-  crouching: 0
-  chargejumphigt: 5
-  charge: 0
-  chargemax: 24
-  nextcharge: 5
-  chargespeed: 6
-  attack: 0
-  attackd: 1
---- !u!114 &5947070288999355402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2431158253972498524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 732b6e308855bfe459742cb0acae0db0, type: 3}
+  m_Script: {fileID: 11500000, guid: bc97c5d5ee4ae1a439a8d368254875ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!50 &1613974516338191109
@@ -184,6 +155,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7912727228589766859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2431158253972498524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b308ab690631b13408e39949b128992e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  moving: 0
+  jumping: 0
+  speed: 2
+  speedmax: 20
+  canjump: 0
+  jumphight: 14
+  jumpdown: 6
+  friction: 8
+  crouching: 0
+  chargejumphigt: 5
+  charge: 0
+  chargemax: 24
+  nextcharge: 5
+  chargespeed: 6
+  attack: 0
+  attackd: 1
 --- !u!61 &7611910005022396587
 BoxCollider2D:
   m_ObjectHideFlags: 0
