@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c95b3e165d0444bac139f5d87549ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 7081433964477747301}
   player: {fileID: 0}
   follow: 1
   followspeed: 18

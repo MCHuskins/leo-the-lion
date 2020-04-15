@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class sniper : MonoBehaviour
 {
@@ -80,7 +81,8 @@ public bool justshot = false;
         if(shooting){
             if(onplayer){
                 player.transform.position = new Vector2(0,0);
-                transform.position = new Vector2(-15,5);
+                transform.position = new Vector2(0,0);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             lastw = false;
             justshot = true;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class partollerkiller : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class partollerkiller : MonoBehaviour
    void OnCollisionEnter2D(Collision2D col){
            if(col.gameObject.tag == "Player" && !(attacking)){
                col.transform.position = new Vector2(0,0);
+               SceneManager.LoadScene(SceneManager.GetActiveScene().name);
            }
            if(col.gameObject.tag == "Player" && (attacking)){
                 Destroy(gameObject);
