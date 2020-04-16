@@ -164,10 +164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  EagleGRFX: {fileID: 0}
-  speed: 200
+  EagleGRFX: {fileID: 6805686137953139669}
+  speed: 400
   nextWaypointDistance: 3
-  startDistance: 20
+  startDistance: 150
 --- !u!114 &6805686139530669321
 MonoBehaviour:
   m_ObjectHideFlags: 0
