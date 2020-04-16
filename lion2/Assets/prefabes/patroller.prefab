@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2520433859301243114}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.15, y: 0.27, z: 2.3980315}
+  m_LocalPosition: {x: 2.87, y: 0.95, z: 2.3980315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9046248798074193907}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9046248797343552180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.19, y: -1.09, z: 2.3980315}
+  m_LocalPosition: {x: 2.2, y: -1.3, z: 2.3980315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9046248798074193907}
@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 5271152028031947531}
   - component: {fileID: 327013168}
   - component: {fileID: 6534200705375991594}
+  - component: {fileID: 1806717409}
   m_Layer: 0
   m_Name: patroller
   m_TagString: Untagged
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7977a26649cc8d4c831603f6619b89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 0.5
+  distance: 1.5
   wdetect: {fileID: 4165093065622731404}
 --- !u!114 &5271152028031947531
 MonoBehaviour:
@@ -221,6 +222,22 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.81, y: 0.37}
-  m_Size: {x: 4.41, y: 3.5}
+  m_Offset: {x: 0.09, y: -0.2}
+  m_Size: {x: 2.96, y: 2.14}
   m_Direction: 1
+--- !u!58 &1806717409
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9046248798074193910}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.88, y: 1.3}
+  serializedVersion: 2
+  m_Radius: 0.67

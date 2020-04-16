@@ -80,8 +80,6 @@ public bool justshot = false;
         }
         if(shooting){
             if(onplayer){
-                player.transform.position = new Vector2(0,0);
-                transform.position = new Vector2(0,0);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             lastw = false;

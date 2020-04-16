@@ -60,6 +60,7 @@
      <Compile Include="Assets\code\nextlevel.cs" />
      <Compile Include="Assets\code\partollerkiller.cs" />
      <Compile Include="Assets\code\sniper.cs" />
+     <Compile Include="Assets\code\stand.cs" />
      <Compile Include="Assets\code\start.cs" />
      <Compile Include="Assets\code\walk.cs" />
      <Compile Include="Assets\gdetection.cs" />
