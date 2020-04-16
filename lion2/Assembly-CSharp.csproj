@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BirdAi.cs" />
      <Compile Include="Assets\code\betterplayer.cs" />
      <Compile Include="Assets\code\cam.cs" />
      <Compile Include="Assets\code\deathblock.cs" />
