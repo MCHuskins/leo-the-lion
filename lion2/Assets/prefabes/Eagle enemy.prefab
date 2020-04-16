@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 6805686139530669323}
   - component: {fileID: 7311596689220648400}
   - component: {fileID: 6805686139530669321}
+  - component: {fileID: 219124064}
   m_Layer: 0
   m_Name: Eagle enemy
   m_TagString: Untagged
@@ -166,7 +167,7 @@ MonoBehaviour:
   target: {fileID: 0}
   EagleGRFX: {fileID: 6805686137953139669}
   speed: 400
-  nextWaypointDistance: 3
+  nextWaypointDistance: 3.1
   startDistance: 150
 --- !u!114 &6805686139530669321
 MonoBehaviour:
@@ -196,3 +197,17 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &219124064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6805686139530669322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ee9a3d2cd60634c9ebcfbbfa052e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacking: 0
+  player: {fileID: 0}
